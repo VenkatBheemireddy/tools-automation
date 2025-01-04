@@ -68,8 +68,8 @@ resource "azurerm_dns_a_record" "public" {
   zone_name           = "azdevopsv82.online"
   resource_group_name = data.azurerm_resource_group.main.name
   ttl                 = 300
- # records             = [azurerm_public_ip.main.ip_address]
-  target_resource_id  = azurerm_public_ip.main.id
+  records             = [azurerm_public_ip.main.ip_address]
+  #target_resource_id  = azurerm_public_ip.main.id
 }
 
 resource "azurerm_virtual_machine" "main" {
