@@ -67,8 +67,9 @@ resource "azurerm_dns_a_record" "public" {
   name                = var.component
   zone_name           = "azdevopsv82.online"
   resource_group_name = data.azurerm_resource_group.main.name
-  ttl                 = 10
-  records             = [azurerm_public_ip.main.ip_address]
+  ttl                 = 300
+ # records             = [azurerm_public_ip.main.ip_address]
+  target_resource_id  = azurerm_public_ip.main.id
 }
 
 resource "azurerm_virtual_machine" "main" {
