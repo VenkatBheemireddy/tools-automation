@@ -29,8 +29,8 @@ terraform {
   }
 }
 
+
 provider "azurerm" {
   features {}
-  subscription_id = "7b6c642c-6e46-418f-b715-e01b2f871413"
+  subscription_id = "9af0e83a-d3ee-4c3c-a244-3274a3457024" # Change it to your subscription id
 }
-
