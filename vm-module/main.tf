@@ -64,14 +64,12 @@ resource "azurerm_dns_a_record" "private" {
 }
 
 resource "azurerm_dns_a_record" "public" {
-# depends_on          = [azurerm_dns_a_record.private]
   name                = var.component
   zone_name           = "azdevopsv82.online"
   resource_group_name = data.azurerm_resource_group.main.name
   ttl                 = 10
   records             = [azurerm_public_ip.main.ip_address]
 }
-
 
 resource "azurerm_virtual_machine" "main" {
   depends_on            = [azurerm_network_interface_security_group_association.main, azurerm_dns_a_record.private, azurerm_dns_a_record.public]
