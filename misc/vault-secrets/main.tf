@@ -1,22 +1,17 @@
-terraform {
-  required_providers {
-    vault = {
-      source  = "hashicorp/vault"
-      version = "4.3.0"
-    }
-  }
-}
-resource "vault_mount" "main" {
+module "create-secrets" {
   for_each = var.secrets
-  path     = each.key
-  type     = "kv"
-  options  = { version = "1" }
-  description = each.key
+  source   = "./create-secrets"
+  kv_path  = each.key
+  secrets  = each.value
 }
 
 variable "secrets" {
   default = {
-    infra = {}
-    roboshop-dev = {}
+    infra = {
+      ssh = {
+        admin_username = "roboshop-ansible",
+        admin_password = "DevOps@123456"
+      }
+    }
   }
 }
