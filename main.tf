@@ -32,7 +32,7 @@ variable "ssh_password" {}
 terraform {
   backend "azurerm" {
     resource_group_name  = "project-setup-1"
-    storage_account_name = "d82tfstates"    # Change this to your storage account
+    storage_account_name = "v82tfstates"    # Change this to your storage account
     container_name       = "tools-tf-state" # This container needs to be created as a pre-requisite
     key                  = "terraform.tfstate"
   }
