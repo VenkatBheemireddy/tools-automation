@@ -43,7 +43,7 @@ resource "azurerm_network_security_group" "main" {
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = var.port  # This code is to open port 8200
+    destination_port_range     = "8200"  #var.port  # This code is to open port 8200
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
