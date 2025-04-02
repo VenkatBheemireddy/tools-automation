@@ -1,5 +1,4 @@
 infra:
-	#infra code is to create vault VM
 	git pull
 	terraform init
 	terraform apply -auto-approve -var ssh_username=venkat -var ssh_password=Devops123456
