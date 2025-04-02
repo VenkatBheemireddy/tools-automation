@@ -4,14 +4,23 @@ module "vm" {
   component    = each.key
   ssh_password = var.ssh_password
   ssh_username = var.ssh_username
-  port         = each.value["port"]
+  port         = each.value["ports"]
+  vm_size      = each.value["vm_size"]
+  #role_definition_name = each.value["role_definition_name"]
 }
 
 variable "tools" {
   default = {
 
     vault = {
-      port = 8200
+      vm_size = "Standard_B2s"
+      ports = {
+        vault = {
+          name     = "vault"
+          priority = 101
+          port     = 8200
+        }
+      }
     }
 
   }
@@ -23,7 +32,7 @@ variable "ssh_password" {}
 terraform {
   backend "azurerm" {
     resource_group_name  = "project-setup-1"
-    storage_account_name = "v82tfstates"    # Change this to your storage account
+    storage_account_name = "d82tfstates"    # Change this to your storage account
     container_name       = "tools-tf-state" # This container needs to be created as a pre-requisite
     key                  = "terraform.tfstate"
   }
