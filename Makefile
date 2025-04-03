@@ -6,7 +6,6 @@ infra:
 
 destroy:
 	git pull
-	terraform init
 	terraform destroy -auto-approve -var ssh_username=venkat -var ssh_password=Devops123456
 
 ansible:
