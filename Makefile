@@ -11,4 +11,4 @@ destroy:
 ansible:
 	#ansible code is to install hashicorp vault
 	git pull
-	ansible-playbook -i $(tool_name)-internal.azdevopsv82.online, tool-setup.yml -e ansible_user=venkat -e ansible_password=Devops123456 -e tool_name=$(tool_name) -e vault_token=$(vault_token)
+	ansible-playbook -i $(tool_name)-internal.azdevopsv82.online, tool-setup.yml -e ansible_user=venkat -e ansible_password=Devops123456 -e tool_name=$(tool_name)
