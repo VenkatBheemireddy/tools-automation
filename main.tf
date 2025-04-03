@@ -4,25 +4,15 @@ module "vm" {
   component    = each.key
   ssh_password = var.ssh_password
   ssh_username = var.ssh_username
-  port         = each.value["ports"]
-  vm_size      = each.value["vm_size"]
-  #role_definition_name = each.value["role_definition_name"]
+  port         = each.value["port"]
 }
 
 variable "tools" {
   default = {
 
     vault = {
-      vm_size = "Standard_B2s"
-      ports = {
-        vault = {
-          name     = "vault"
-          priority = 101
-          port     = 8200
-        }
-      }
+      port = 8200
     }
-
   }
 }
 

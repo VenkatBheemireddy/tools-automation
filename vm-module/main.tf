@@ -3,8 +3,13 @@ resource "azurerm_public_ip" "main" {
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
   allocation_method   = "Dynamic"
-  sku                 = "Basic"
+  sku                 = "Basic" #this info we got from workstation
+
+  tags = {
+    component = "${var.component}-ip"
+  }
 }
+
 
 resource "azurerm_network_interface" "main" {
   name                = "${var.component}-nic"
@@ -43,9 +48,13 @@ resource "azurerm_network_security_group" "main" {
     access                     = "Allow"
     protocol                   = "Tcp"
     source_port_range          = "*"
-    destination_port_range     = "8200"  #var.port  # This code is to open port 8200
+    destination_port_range     = var.port
     source_address_prefix      = "*"
     destination_address_prefix = "*"
+  }
+
+  tags = {
+    component = "${var.component}-nsg"
   }
 }
 
@@ -67,13 +76,12 @@ resource "azurerm_dns_a_record" "public" {
   name                = var.component
   zone_name           = "azdevopsv82.online"
   resource_group_name = data.azurerm_resource_group.main.name
-  ttl                 = 300
+  ttl                 = 10
   records             = [azurerm_public_ip.main.ip_address]
-  #target_resource_id  = azurerm_public_ip.main.id
 }
 
 resource "azurerm_virtual_machine" "main" {
-  depends_on            = [azurerm_network_interface_security_group_association.main, azurerm_dns_a_record.private, azurerm_dns_a_record.public]
+  depends_on            = [azurerm_network_interface_security_group_association.main, azurerm_dns_a_record.private]
   name                  = var.component
   location              = data.azurerm_resource_group.main.location
   resource_group_name   = data.azurerm_resource_group.main.name
@@ -103,5 +111,8 @@ resource "azurerm_virtual_machine" "main" {
   }
   os_profile_linux_config {
     disable_password_authentication = false
+  }
+  tags = {
+    component = var.component
   }
 }
