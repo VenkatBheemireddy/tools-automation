@@ -1,8 +1,8 @@
 infra:
 	git pull
 	terraform init
-#	terraform apply -auto-approve -var ssh_username=venkat -var ssh_password=Devops123456
-	 terraform destroy -auto-approve -var ssh_username=venkat -var ssh_password=Devops123456
+	terraform apply -auto-approve -var ssh_username=venkat -var ssh_password=Devops123456
+#	 terraform destroy -auto-approve -var ssh_username=venkat -var ssh_password=Devops123456
 	# Username and Password should not be hardcoded, Here we just hardcoding because to avoid the passing of input. This needs to be parsed as input in real time
 
 
