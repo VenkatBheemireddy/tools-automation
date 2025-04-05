@@ -6,6 +6,7 @@ resource "vault_mount" "main" {
 }
 
 resource "vault_kv_secret" "secret" {
+  depends_on = [vault_mount.main]  #to wait until the above code gets executed
   for_each   = var.secrets
   path       = "${var.kv_path}/${each.key}"
   data_json  = jsonencode(each.value)
