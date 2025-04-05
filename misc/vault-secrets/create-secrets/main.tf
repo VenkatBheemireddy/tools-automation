@@ -10,3 +10,5 @@ resource "vault_kv_secret" "secret" {
   path       = "${var.kv_path}/${each.key}"
   data_json  = jsonencode(each.value)
 }
+
+
