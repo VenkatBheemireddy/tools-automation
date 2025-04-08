@@ -22,8 +22,18 @@ variable "secrets" {
         payment_endpoint = "http://payment-dev.azdevopsv82.online:8080"
       }
       catalogue = {
-        MONGO = "true"
+        MONGO     = "true"
         MONGO_URL = "mongodb://mongodb-dev.azdevopsv82.online:27017/catalogue"
+      }
+      user = {
+        MONGO     = "true"
+        REDIS_URL = "redis://redis-dev.azdevopsv82.online:6379"
+        MONGO_URL = "mongodb://mongodb-dev.azdevopsv82.online:27017/users"
+      }
+      cart = {
+        REDIS_HOST     = "redis-dev.azdevopsv82.online"
+        CATALOGUE_HOST = "catalogue-dev.azdevopsv82.online"
+        CATALOGUE_PORT = "8080"
       }
     }
   }
