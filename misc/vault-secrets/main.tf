@@ -35,6 +35,27 @@ variable "secrets" {
         CATALOGUE_HOST = "catalogue-dev.azdevopsv82.online"
         CATALOGUE_PORT = "8080"
       }
+      shipping = {
+        CART_ENDPOINT  = "cart-dev.azdevopsv82.online:8080"
+        DB_HOST        = "mysql-dev.azdevopsv82.online"
+        MYSQL_ROOT_PASSWORD = "RoboShop@1"
+      }
+      payment = {
+        CART_HOST = "cart-dev.azdevopsv82.online"
+        CART_PORT = "8080"
+        USER_HOST = "user-dev.azdevopsv82.online"
+        USER_PORT = "8080"
+        AMQP_HOST = "rabbitmq-dev.azdevopsv82.online"
+        AMQP_USER = "roboshop"
+        AMQP_PASS = "roboshop123"
+      }
+      mysql = {
+        MYSQL_ROOT_PASSWORD = "RoboShop@1"
+      }
+      rabbitmq = {
+        AMQP_USER = "roboshop"
+        AMQP_PASS = "roboshop123"
+      }
     }
   }
 }
