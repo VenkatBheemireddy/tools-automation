@@ -57,6 +57,7 @@ variable "secrets" {
         APP_GIT_URL   = "https://github.com/roboshop-devops-project-v3/shipping"
         DB_HOST       = "mysql-dev.azdevopsv82.online"
         DB_USER       = "root"
+        DB_PASS       = "RoboShop@1"
         MYSQL_ROOT_PASSWORD = "RoboShop@1"
       }
       payment = {
