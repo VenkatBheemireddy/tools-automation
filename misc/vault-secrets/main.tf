@@ -20,6 +20,16 @@ variable "secrets" {
         user_endpoint = "http://user-dev.azdevopsv82.online:8080"
         shipping_endpoint = "http://shipping-dev.azdevopsv82.online:8080"
         payment_endpoint = "http://payment-dev.azdevopsv82.online:8080"
+        CATALOGUE_HOST = "catalogue-dev.azdevopsv82.online"
+        CATALOGUE_PORT = "8080"
+        USER_HOST      = "user-dev.azdevopsv82.online"
+        USER_PORT      = "8080"
+        CART_HOST      = "cart-dev.azdevopsv82.online"
+        CART_PORT      = "8080"
+        SHIPPING_HOST  = "shipping-dev.azdevopsv82.online"
+        SHIPPING_PORT  = "8080"
+        PAYMENT_HOST   = "payment-dev.azdevopsv82.online"
+        PAYMENT_PORT   = "8080"
       }
       catalogue = {
         MONGO     = "true"
@@ -59,5 +69,7 @@ variable "secrets" {
     }
   }
 }
+
+
 
 
