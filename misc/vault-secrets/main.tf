@@ -32,8 +32,8 @@ variable "secrets" {
         PAYMENT_PORT   = "8080"
       }
       catalogue = {
-        MONGO     = "true"
-        MONGO_URL = "mongodb://mongodb-dev.azdevopsv82.online:27017/catalogue"
+        MONGO        = "true"
+        MONGO_URL    = "mongodb://mongodb-dev.azdevopsv82.online:27017/catalogue"
 
         DB_TYPE      = "mongo"
         APP_GIT_URL  = "https://github.com/roboshop-devops-project-v3/catalogue"
