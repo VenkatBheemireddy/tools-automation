@@ -31,6 +31,7 @@ variable "secrets" {
         PAYMENT_HOST   = "payment-dev.azdevopsv82.online"
         PAYMENT_PORT   = "8080"
       }
+
       catalogue = {
         MONGO        = "true"
         MONGO_URL    = "mongodb://mongodb-dev.azdevopsv82.online:27017/catalogue"
@@ -40,16 +41,19 @@ variable "secrets" {
         DB_HOST      = "mongodb-dev.azdevopsv82.online"
         SCHEMA_FILE  = "db/master-data.js"
       }
+
       user = {
         MONGO     = "true"
         REDIS_URL = "redis://redis-dev.azdevopsv82.online:6379"
         MONGO_URL = "mongodb://mongodb-dev.azdevopsv82.online:27017/users"
       }
+
       cart = {
         REDIS_HOST     = "redis-dev.azdevopsv82.online"
         CATALOGUE_HOST = "catalogue-dev.azdevopsv82.online"
         CATALOGUE_PORT = "8080"
       }
+
       shipping = {
         CART_ENDPOINT  = "cart-dev.azdevopsv82.online:8080"
         DB_HOST        = "mysql-dev.azdevopsv82.online"
@@ -60,6 +64,7 @@ variable "secrets" {
         DB_PASS       = "RoboShop@1"
         MYSQL_ROOT_PASSWORD = "RoboShop@1"
       }
+
       payment = {
         CART_HOST = "cart-dev.azdevopsv82.online"
         CART_PORT = "8080"
@@ -69,9 +74,11 @@ variable "secrets" {
         AMQP_USER = "roboshop"
         AMQP_PASS = "roboshop123"
       }
+
       mysql = {
         MYSQL_ROOT_PASSWORD = "RoboShop@1"
       }
+
       rabbitmq = {
         AMQP_USER = "roboshop"
         AMQP_PASS = "roboshop123"
@@ -79,7 +86,4 @@ variable "secrets" {
     }
   }
 }
-
-
-
 
