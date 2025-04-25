@@ -15,20 +15,20 @@ variable "secrets" {
     }
     roboshop-dev = {
       frontend = {
-        catalogue_endpoint = "http://catalogue-dev.azdevopsv82.online:8080"
+        catalogue_endpoint = "http://catalogue:8080"
         cart_endpoint = "http://cart-dev.azdevopsv82.online:8080"
         user_endpoint = "http://user-dev.azdevopsv82.online:8080"
         shipping_endpoint = "http://shipping-dev.azdevopsv82.online:8080"
         payment_endpoint = "http://payment-dev.azdevopsv82.online:8080"
-        CATALOGUE_HOST = "catalogue-dev.azdevopsv82.online"
+        CATALOGUE_HOST = "catalogue"
         CATALOGUE_PORT = "8080"
-        USER_HOST      = "user-dev.azdevopsv82.online"
+        USER_HOST      = "user"
         USER_PORT      = "8080"
-        CART_HOST      = "cart-dev.azdevopsv82.online"
+        CART_HOST      = "cart"
         CART_PORT      = "8080"
-        SHIPPING_HOST  = "shipping-dev.azdevopsv82.online"
+        SHIPPING_HOST  = "shipping"
         SHIPPING_PORT  = "8080"
-        PAYMENT_HOST   = "payment-dev.azdevopsv82.online"
+        PAYMENT_HOST   = "payment"
         PAYMENT_PORT   = "8080"
       }
 
@@ -50,12 +50,12 @@ variable "secrets" {
 
       cart = {
         REDIS_HOST     = "redis-dev.azdevopsv82.online"
-        CATALOGUE_HOST = "catalogue-dev.azdevopsv82.online"
+        CATALOGUE_HOST = "catalogue"
         CATALOGUE_PORT = "8080"
       }
 
       shipping = {
-        CART_ENDPOINT  = "cart-dev.azdevopsv82.online:8080"
+        CART_ENDPOINT  = "cart:8080"
         DB_HOST        = "mysql-dev.azdevopsv82.online"
         DB_TYPE       = "mysql"
         APP_GIT_URL   = "https://github.com/roboshop-devops-project-v3/shipping"
@@ -66,9 +66,9 @@ variable "secrets" {
       }
 
       payment = {
-        CART_HOST = "cart-dev.azdevopsv82.online"
+        CART_HOST = "cart"
         CART_PORT = "8080"
-        USER_HOST = "user-dev.azdevopsv82.online"
+        USER_HOST = "user"
         USER_PORT = "8080"
         AMQP_HOST = "rabbitmq-dev.azdevopsv82.online"
         AMQP_USER = "roboshop"
