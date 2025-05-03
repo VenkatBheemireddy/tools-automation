@@ -13,6 +13,9 @@ variable "tools" {
     vault = {
       port = 8200
     }
+    github-runner = {
+      port = 443
+    }
   }
 }
 
