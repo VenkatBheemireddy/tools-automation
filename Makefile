@@ -1,6 +1,6 @@
 infra:
 	git pull
-	terraform init -upgrade
+	terraform init
 	terraform apply -auto-approve -var ssh_username=venkat -var ssh_password=Devops123456
 	# Username and Password should not be hardcoded, Here we just hardcoding because to avoid the passing of input. This needs to be parsed as input in real time
 
