@@ -5,7 +5,7 @@
 
 - name: Download runner software
   ansible.builtin.unarchive:
-    src: https://github.com/actions/runner/releases/download/v2.322.0/actions-runner-linux-x64-2.322.0.tar.gz
+    src: https://github.com/actions/runner/releases/download/v2.323.0/actions-runner-linux-x64-2.323.0.tar.gz
     dest: /github-runner
     owner: github-runner
     group: github-runner
