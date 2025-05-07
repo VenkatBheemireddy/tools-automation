@@ -13,7 +13,7 @@ variable "tools" {
 
     vault = {
       port = 8200
-      role_definition_name = "null"
+      role_definition_name = null
     }
 
     github-runner = {
