@@ -49,9 +49,5 @@
     state: installed
 
 - name: Az login to service principal
-  ansible.builtin.shell: az login --service-principal -u token1 -p token2 --tenant token3
+  ansible.builtin.shell: az login --service-principal -u {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:az_sp_client token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }} -p {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:az_sp_password token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }} --tenant {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:az_sp_tenant token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }}
   become_user: github-runner
-  vars:
-    token1: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:az_sp_client token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }}"
-    token2: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:az_sp_password token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }}"
-    token3: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:az_sp_tenant token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }}"
