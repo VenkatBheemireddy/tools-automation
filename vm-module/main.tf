@@ -127,7 +127,9 @@ resource "azurerm_virtual_machine" "main" {
   identity {
     type = "SystemAssigned"
   }
+
 }
+
 
 resource "azurerm_role_assignment" "role-assignment" {
   depends_on            = [azurerm_virtual_machine.main]
