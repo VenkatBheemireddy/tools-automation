@@ -114,4 +114,9 @@ resource "azurerm_virtual_machine" "main" {
   tags = {
     component = var.component
   }
+
+  #this code is required for Github Actions runner automation
+  identity {
+    type = "SystemAssigned"
+  }
 }
