@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "4.14.0"
+    }
+  }
+}
 resource "azurerm_public_ip" "main" {
   name                = "${var.component}-ip"
   location            = data.azurerm_resource_group.main.location
@@ -119,4 +127,11 @@ resource "azurerm_virtual_machine" "main" {
   identity {
     type = "SystemAssigned"
   }
+}
+
+resource "azurerm_role_assignment" "role-assignment" {
+  count                 = var.role_definition_name == null ? 0 : 1
+  scope                 = data.azurerm_resource_group.main.id
+  role_definition_name  = var.role_definition_name
+  principal_id          = azurerm_virtual_machine.main.identity.principal_id
 }

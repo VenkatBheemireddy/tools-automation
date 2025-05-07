@@ -5,6 +5,7 @@ module "vm" {
   ssh_password = var.ssh_password
   ssh_username = var.ssh_username
   port         = each.value["port"]
+  role_definition_name = each.value["role_definition_name"]
 }
 
 variable "tools" {
@@ -12,9 +13,13 @@ variable "tools" {
 
     vault = {
       port = 8200
+      role_definition_name = "null"
     }
+
     github-runner = {
       port = 443
+      #adding the below code for github-runner
+      role_definition_name = "Contributor"
     }
   }
 }
