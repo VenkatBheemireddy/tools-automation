@@ -1,0 +1,40 @@
+- name: Add github runner user
+  ansible.builtin.user:
+    name: github-runner
+    home: /github-runner
+
+- name: Download runner software
+  ansible.builtin.unarchive:
+    src: https://github.com/actions/runner/releases/download/v2.322.0/actions-runner-linux-x64-2.322.0.tar.gz
+    dest: /github-runner
+    owner: github-runner
+    group: github-runner
+    remote_src: yes
+
+- name: Install libicu
+  ansible.builtin.dnf:
+    name: libicu
+    state: installed
+
+- name: Configure runner
+  ansible.builtin.shell: ./config.sh --url https://github.com/venkatdevopsorg --token {{ token }} --runnergroup Default --name github-runner-az --labels self-hosted --work _work --replace
+  args:
+    chdir: /github-runner
+  become_user: github-runner
+  vars:
+    token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:RUNNER_TOKEN token={{ vault_token }} url=http://10.0.0.12:8200') }}"
+  ignore_errors: yes
+
+- name: Copy Service
+  ansible.builtin.template:
+    src: github-runner.service
+    dest: /etc/systemd/system/github-runner.service
+
+
+- name: Start Service
+  ansible.builtin.systemd_service:
+    name: github-runner
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
+
