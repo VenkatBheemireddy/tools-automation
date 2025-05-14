@@ -16,6 +16,12 @@
     name: libicu
     state: installed
 
+- name: Unconfigure runner
+  ansible.builtin.shell: ./config.sh remove github-runner-az
+  args:
+    chdir: /github-runner
+  become_user: github-runner
+
 - name: Configure runner
   ansible.builtin.shell: ./config.sh --url https://github.com/VenkatBheemireddyOrg --token {{ token }} --runnergroup Default --name github-runner-az --labels self-hosted --work _work --replace
   args:
