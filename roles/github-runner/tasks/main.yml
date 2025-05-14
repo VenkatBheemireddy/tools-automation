@@ -58,13 +58,13 @@
 #  ansible.builtin.shell: az login --service-principal -u {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:az_sp_client token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }} -p {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:az_sp_password token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }} --tenant {{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:az_sp_tenant token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }}
 #  become_user: github-runner
 
-#- name: Copy kubernetes repo file
-#  ansible.builtin.template:
-#    src: kube.repo
-#    dest: /etc/yum.repos.d/kube.repo
-#
-#
-#- name: Install kubectl
-#  ansible.builtin.dnf:
-#    name: kubectl
-#    state: installed
+- name: Copy kubernetes repo file
+  ansible.builtin.template:
+    src: kube.repo
+    dest: /etc/yum.repos.d/kube.repo
+
+
+- name: Install kubectl
+  ansible.builtin.dnf:
+    name: kubectl
+    state: installed
