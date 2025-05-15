@@ -1,5 +1,5 @@
 [Unit]
-Description=GitHub Actions Runner (VenaktBheemireddyOrg.github-runner-az)
+Description=GitHub Actions Runner
 After=network.target
 
 [Service]

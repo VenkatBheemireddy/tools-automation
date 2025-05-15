@@ -16,11 +16,6 @@
     name: libicu
     state: installed
 
-#- name: Unconfigure runner
-#  ansible.builtin.shell: ./config.sh remove --url https://github.com/VenkatBheemireddyOrg --runnergroup Default --name github-runner-az --labels self-hosted
-#  args:
-#    chdir: /github-runner
-#  become_user: github-runner
 
 - name: Configure runner
   ansible.builtin.shell: ./config.sh --url https://github.com/VenkatBheemireddyOrg --token {{ token }} --runnergroup Default --name github-runner-az --labels self-hosted --work _work --replace
@@ -31,34 +26,34 @@
     token: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=infra/github-actions:RUNNER_TOKEN token={{ vault_token }} url=http://vault-internal.azdevopsv82.online:8200') }}"
   ignore_errors: yes
 
-#- name: Copy Service
-#  ansible.builtin.template:
-#    src: github-runner.service
-#    dest: /etc/systemd/system/github-runner.service
-#
-#
-#- name: Start Service
-#  ansible.builtin.systemd_service:
-#    name: github-runner
-#    state: started
-#    enabled: yes
-#    daemon-reload: yes
-#
-#- name: Download Terraform Repo
-#  ansible.builtin.get_url:
-#    url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
-#    dest: /etc/yum.repos.d/hashicorp.repo
-#
-#- name: Install Terraform
-#  ansible.builtin.dnf:
-#    name: terraform
-#    state: installed
-#
-#
-#- name: Copy kubernetes repo file
-#  ansible.builtin.template:
-#    src: kube.repo
-#    dest: /etc/yum.repos.d/kube.repo
+- name: Copy Service
+  ansible.builtin.template:
+    src: github-runner.service
+    dest: /etc/systemd/system/github-runner.service
+
+
+- name: Start Service
+  ansible.builtin.systemd_service:
+    name: github-runner
+    state: started
+    enabled: yes
+    daemon-reload: yes
+
+- name: Download Terraform Repo
+  ansible.builtin.get_url:
+    url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+    dest: /etc/yum.repos.d/hashicorp.repo
+
+- name: Install Terraform
+  ansible.builtin.dnf:
+    name: terraform
+    state: installed
+
+
+- name: Copy kubernetes repo file
+  ansible.builtin.template:
+    src: kube.repo
+    dest: /etc/yum.repos.d/kube.repo
 
 
 - name: Install kubectl
