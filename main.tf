@@ -16,11 +16,11 @@ variable "tools" {
       # role_definition_name = null
     }
 
-    github-runner = {
-      port = 443
-      #adding the below code for github-runner
-      # role_definition_name = "Contributor"
-    }
+    # github-runner = {
+    #   port = 443
+    #   #adding the below code for github-runner
+    #   # role_definition_name = "Contributor"
+    # }
   }
 }
 
