@@ -10,7 +10,7 @@ terraform {
 terraform {
   backend "azurerm" {
     resource_group_name  = "project-setup-1"
-    storage_account_name = "d82tfstates"
+    storage_account_name = "v82tfstates"
     container_name       = "github-env"
     key                  = "terraform.tfstate"
 
