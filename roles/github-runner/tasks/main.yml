@@ -67,3 +67,16 @@
     curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/download/v$VERSION/argocd-linux-amd64
     install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
     rm argocd-linux-amd64
+
+- name: Setup Nodejs module
+  ansible.builtin.shell: dnf module disable nodejs -y ; dnf module enable nodejs:20 -y
+
+- name: Install App Software Language packs
+  ansible.builtin.dnf:
+    name:
+      - maven
+      - nodejs
+      - python3
+      - gcc
+      - python3-devel
+
