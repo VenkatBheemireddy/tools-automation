@@ -21,6 +21,11 @@ variable "tools" {
       #adding the below code for github-runner
       # role_definition_name = "Contributor"
     }
+
+    sonarqube = {
+      port = 9000
+    }
+
   }
 }
 
