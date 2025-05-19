@@ -14,15 +14,15 @@
     owner: sonar
     group: sonar
 
-- name: Download and extract sonar
+- name: Download and Extract sonar
   ansible.builtin.unarchive:
-    src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
+    src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.2.0.102705.zip
     dest: /sonarqube
     owner: sonar
     group: sonar
     remote_src: true
 
-- name: Copy service file
+- name: Copy Service file
   ansible.builtin.template:
     src: sonarqube.service
     dest: /etc/systemd/system/sonarqube.service

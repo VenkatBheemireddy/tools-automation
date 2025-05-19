@@ -3,7 +3,7 @@ Description=SonarQube Server
 After=network.target
 
 [Service]
-ExecStart=/sonarqube/sonarqube-25.5.0.107428/bin/linux-x86-64/sonar.sh
+ExecStart=/sonarqube/sonarqube-25.2.0.102705/bin/linux-x86-64/sonar.sh start
 User=sonar
 KillMode=process
 KillSignal=SIGTERM
