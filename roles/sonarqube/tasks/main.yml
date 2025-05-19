@@ -17,6 +17,18 @@
     group: sonar
     remote_src: true
 
+- name: Copy service file
+  ansible.builtin.template:
+    src: sonarqube.service
+    dest: /etc/systemd/system/sonarqube.service
+
+- name: Start service
+  ansible.builtin.systemd_service:
+    name: sonarqube
+    state: started
+    enabled: yes
+    daemon_reload: yes
+
 
 
 
