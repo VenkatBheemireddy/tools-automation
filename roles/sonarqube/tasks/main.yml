@@ -1,0 +1,22 @@
+- name: Create sonarqube user
+  ansible.builtin.user:
+    name: sonar
+
+- name: Create sonarqube directory
+  ansible.builtin.file:
+    path: /sonarqube
+    state: directory
+    owner: sonar
+    group: sonar
+
+- name: Download and extract sonar
+  ansible.builtin.unarchive:
+    src: https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.5.0.107428.zip
+    dest: /sonarqube
+    owner: sonar
+    group: sonar
+    remote_src: true
+
+
+
+
