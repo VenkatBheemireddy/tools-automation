@@ -80,3 +80,8 @@
       - gcc
       - python3-devel
 
+- name: Download sonar scanner
+  ansible.builtin.unarchive:
+    src: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610-linux-x64.zip
+    dest: /opt
+    remote_src: yes
