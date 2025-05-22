@@ -32,12 +32,12 @@
     dest: /etc/systemd/system/github-runner.service
 
 
-- name: Start Service
-  ansible.builtin.systemd_service:
-    name: github-runner
-    state: restarted
-    enabled: yes
-    daemon-reload: yes
+#- name: Start Service
+#  ansible.builtin.systemd_service:
+#    name: github-runner
+#    state: restarted
+#    enabled: yes
+#    daemon-reload: yes
 
 - name: Download Terraform Repo
   ansible.builtin.get_url:
@@ -85,3 +85,34 @@
     src: https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-6.2.1.4610-linux-x64.zip
     dest: /opt
     remote_src: yes
+
+- name: Copy docker repo
+  ansible.builtin.template:
+    src: docker.repo
+    dest: /etc/yum.repos.d/docker.repo
+
+- name: Install docker
+  ansible.builtin.dnf:
+    name: docker-ce
+    state: installed
+
+- name: Add user to docker group.
+  ansible.builtin.user:
+    name: github-runner
+    groups: docker
+
+- name: Start Docker Service
+  ansible.builtin.systemd_service:
+    name: docker
+    state: restarted
+    enabled: yes
+
+- name: ACR Login
+  ansible.builtin.shell: az acr login --name roboshopb82
+
+- name: Start Service
+  ansible.builtin.systemd_service:
+    name: github-runner
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
