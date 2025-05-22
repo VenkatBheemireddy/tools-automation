@@ -22,9 +22,9 @@ variable "tools" {
       # role_definition_name = "Contributor"
     }
 
-    sonarqube = {
-      port = 9000
-    }
+    # sonarqube = {
+    #   port = 9000
+    # }
 
   }
 }
