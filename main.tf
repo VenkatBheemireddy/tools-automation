@@ -26,6 +26,22 @@ variable "tools" {
     #   port = 9000
     # }
 
+    # jenkins = {
+    #   port = 8080
+    # }
+
+    # jenkins-agent = {
+    #   port = 8080
+    # }
+
+    prometheus = {
+      port = 9090
+    }
+
+    prom-node = {
+      port = 9100
+    }
+
   }
 }
 
