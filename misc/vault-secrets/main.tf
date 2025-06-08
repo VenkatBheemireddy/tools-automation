@@ -7,6 +7,11 @@ module "create-secrets" {
 
 variable "secrets" {
   default = {
+    kubernetes = {
+      grafana = {
+        grafana_auth = "admin:prom-operator"
+      }
+    }
     infra = {
       ssh = {
         admin_username = "roboshop-ansible",
