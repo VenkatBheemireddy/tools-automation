@@ -5,6 +5,7 @@ module "vm" {
   ssh_password = var.ssh_password
   ssh_username = var.ssh_username
   port         = each.value["port"]
+  vm_size      = each.value["vm_size"]
   # role_definition_name = each.value["role_definition_name"]
 }
 
@@ -14,12 +15,19 @@ variable "tools" {
     vault = {
       port = 8200
       # role_definition_name = null
+      vm_size = "Standard_B2s"
     }
 
     github-runner = {
       port = 443
       #adding the below code for github-runner
       # role_definition_name = "Contributor"
+      vm_size = "Standard_B2s"
+    }
+
+    elasticsearch = {
+      port = 9100
+      vm_size = "Standard_E2s_v3"
     }
 
     # sonarqube = {
