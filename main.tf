@@ -42,6 +42,18 @@ variable "tools" {
           priority = 101
           port     = 9200
         }
+
+        kibana = {
+          name     = "kibana"
+          priority = 102
+          port     = 80
+        }
+
+        logstash = {
+          name     = "logstash"
+          priority = 103
+          port     = 5044
+        }
       }
     }
 
