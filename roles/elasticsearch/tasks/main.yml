@@ -1,0 +1,24 @@
+- name: Copy elasticsearch repo
+  ansible.builtin.template:
+    src: elastic.repo
+    dest: /etc/yum.repos.d/elastic.repo
+
+- name: Install ELK
+  ansible.builtin.dnf:
+    name:
+      - elasticsearch
+      - kibana
+      - logstash
+    state: installed
+
+- name: Start ELK
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - elasticsearch
+    - kibana
+    - logstash
+
+
