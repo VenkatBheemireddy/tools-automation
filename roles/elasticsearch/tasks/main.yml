@@ -12,7 +12,7 @@
       - nginx
     state: installed
 
-- name: copy nginx config file
+- name: Copy nginx config file
   ansible.builtin.template:
     src: nginx.conf
     dest: /etc/nginx/nginx.conf
@@ -28,6 +28,16 @@
     - logstash
     - nginx
 
+- name: Copy logstash config
+  ansible.builtin.template:
+    src: logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
+
+- name: Restart Logstash
+  ansible.builtin.systemd_service:
+    name: logstash
+    state: restarted
+
 ## Manual commands
 
 # 1. Enrollment token for kibana
@@ -38,13 +48,3 @@
 
 # 3. Reset elastic password
 # /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
-
-- name: Copy logstash config
-  ansible.builtin.template:
-    src: logstash.conf
-    dest: /etc/logstash/conf.d/logstash.conf
-
-- name: Restart Logstash
-  ansible.builtin.systemd_service:
-    name: logstash
-    state: restarted
