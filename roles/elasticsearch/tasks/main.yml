@@ -9,7 +9,13 @@
       - elasticsearch
       - kibana
       - logstash
+      - nginx
     state: installed
+
+- name: copy nginx config file
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
 
 - name: Start ELK
   ansible.builtin.systemd_service:
@@ -20,3 +26,4 @@
     - elasticsearch
     - kibana
     - logstash
+    - nginx
