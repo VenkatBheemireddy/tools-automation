@@ -69,13 +69,13 @@ variable "tools" {
     #   port = 8080
     # }
 
-    # prometheus = {
-    #   port = 9090
-    # }
-    #
-    # prom-node = {
-    #   port = 9100
-    # }
+    prometheus = {
+      port = 9090
+    }
+
+    prom-node = {
+      port = 9100
+    }
 
   }
 }
