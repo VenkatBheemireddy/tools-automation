@@ -27,3 +27,24 @@
     - kibana
     - logstash
     - nginx
+
+## Manual commands
+
+# 1. Enrollment token for kibana
+# /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana
+
+# 2. Get OPT for kibana
+# /usr/share/kibana/bin/kibana-verification-code
+
+# 3. Reset elastic password
+# /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
+
+- name: Copy logstash config
+  ansible.builtin.template:
+    src: logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
+
+- name: Restart Logstash
+  ansible.builtin.systemd_service:
+    name: logstash
+    state: restarted
